@@ -50,7 +50,7 @@ class Employee{
     }
 }
 
-class PayRoll extends Employee{
+class PayRoll{
     PayRoll(String name, String EmployeeID, String role, double baseSalary) {
         super(name, EmployeeID, role, baseSalary);
     }
