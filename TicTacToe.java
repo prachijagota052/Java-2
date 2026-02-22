@@ -18,9 +18,11 @@ class TicTacToe{
         }
     }
     public void draw(){ 
-        System.out.println(list1);
-        System.out.println(list2);
-        System.out.println(list3);
+        System.out.println(String.join("|", list1));
+        System.out.println("-+-+-");
+        System.out.println(String.join("|", list2));
+        System.out.println("-+-+-");
+        System.out.println(String.join("|", list3));
 
 
     }
@@ -65,38 +67,25 @@ class TicTacToe{
         draw();
 
     }
-    public void check(){
+    public void check(char player){
         if(chance<9)
-    {
-        if(list1.get(0).equals("X") && list1.get(1).equals("X") && list1.get(2).equals("X") 
-        || list2.get(0).equals("X") && list2.get(1).equals("X") && list2.get(2).equals("X") 
-        || list3.get(0).equals("X") && list3.get(1).equals("X") && list3.get(2).equals("X") 
-        || list1.get(0).equals("X") && list2.get(0).equals("X") && list3.get(0).equals("X") 
-        || list1.get(1).equals("X") && list2.get(1).equals("X") && list3.get(1).equals("X") 
-        || list1.get(2).equals("X") && list2.get(2).equals("X") && list3.get(2).equals("X") 
-        || list1.get(0).equals("X") && list2.get(1).equals("X") && list3.get(2).equals("X") 
-        || list1.get(2).equals("X") && list2.get(1).equals("X") && list3.get(0).equals("X")){
+        {
+            if(list1.get(0).equals(String.valueOf(player)) && list1.get(1).equals(String.valueOf(player)) && list1.get(2).equals(String.valueOf(player)) 
+            || list2.get(0).equals(String.valueOf(player)) && list2.get(1).equals(String.valueOf(player)) && list2.get(2).equals(String.valueOf(player)) 
+            || list3.get(0).equals(String.valueOf(player)) && list3.get(1).equals(String.valueOf(player)) && list3.get(2).equals(String.valueOf(player)) 
+            || list1.get(0).equals(String.valueOf(player)) && list2.get(0).equals(String.valueOf(player)) && list3.get(0).equals(String.valueOf(player)) 
+            || list1.get(1).equals(String.valueOf(player)) && list2.get(1).equals(String.valueOf(player)) && list3.get(1).equals(String.valueOf(player)) 
+            || list1.get(2).equals(String.valueOf(player)) && list2.get(2).equals(String.valueOf(player)) && list3.get(2).equals(String.valueOf(player)) 
+            || list1.get(0).equals(String.valueOf(player)) && list2.get(1).equals(String.valueOf(player)) && list3.get(2).equals(String.valueOf(player)) 
+            || list1.get(2).equals(String.valueOf(player)) && list2.get(1).equals(String.valueOf(player)) && list3.get(0).equals(String.valueOf(player))){
             chance=10;
-            System.out.println("Player X wins!");
-        }
-        else if(list1.get(0).equals("O") && list1.get(1).equals("O") && list1.get(2).equals("O")
-        || list2.get(0).equals("O") && list2.get(1).equals("O")   && list2.get(2).equals("O")
-        || list3.get(0).equals("O") && list3.get(1).equals("O") && list3.get(2).equals("O")
-        || list1.get(0).equals("O") && list2.get(0).equals("O") && list3.get(0).equals("O")
-        || list1.get(1).equals("O") && list2.get(1).equals("O") && list3.get(1).equals("O")
-        || list1.get(2).equals("O") && list2.get(2).equals("O") && list3.get(2).equals("O")
-        || list1.get(0).equals("O") && list2.get(1).equals("O") && list3.get(2).equals("O")
-        || list1.get(2).equals("O") && list2.get(1).equals("O") && list3.get(0).equals("O")){
-            chance=10;
-            System.out.println("Player O wins!");
-        }
-        chance++;
-        }
-        else{
+            System.out.println("Player " + player + " wins!");
+            }
+        else if (chance==8){
                 
-            System.out.println("It's a draw!");
+            System.out.println("It's a draw!"); 
+        }
 
-            
         }
     }
 
@@ -112,16 +101,23 @@ class TicTacToe{
             else if(chance%2==0){
                 System.out.println("Player X's turn");
                 game.X();
-                game.check();
+                if(chance>=5){
+
+                     game.check('X');
+                }
+                chance++;
                 if(chance>=9){
-                System.out.println("Game over!");
-                break;
-            }
+                    System.out.println("Game over!");
+                    break;
+                }
             }
             else{
                 System.out.println("Player O's turn");
                 game.O();
-                game.check();
+                if(chance>=5){  
+                    game.check('O');
+                }
+                chance++;
                 if(chance>=9){
                 System.out.println("Game over!");
                 break;
