@@ -4,7 +4,7 @@ class Student{
     public ArrayList<Double> grades;
     Student(String name){
         this.name=name;
-        this.grades = new ArrayList<Double>();
+        this.grades = new ArrayList<>();
     }
     
     public void addGrade(double grade)
@@ -13,8 +13,8 @@ class Student{
     }
     public double calculateAverage()
     {
-        Double sum=0.0;
-        for(Double g : grades) 
+        double sum=0.0;
+        for(double g : grades) 
             { sum+=g; } 
         return sum/grades.size();
     }
@@ -31,7 +31,7 @@ class GradeManager extends Student{
         super(null);
     }
     
-    private ArrayList<Student> students=new ArrayList<Student>(); //imp to initialize the ArrayList otherwise it will throw NullPointerException when we try to add students to it.
+    private ArrayList<Student> students =new ArrayList<>(); //imp to initialize the ArrayList otherwise it will throw NullPointerException when we try to add students to it.
     public void addStudent(Student student)
     {   
         students.add(student);
@@ -67,6 +67,6 @@ public class Scenario_2{
         s1.addGrade(90);
         manager.addStudent(s1);
         manager.findStudentByName("Alice");
-        //manager.displayAllStudents();
+        manager.displayAllStudents();
     }
 }

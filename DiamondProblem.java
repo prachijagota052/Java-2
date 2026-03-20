@@ -1,11 +1,11 @@
 interface Father {
-    default void Fathershow() {
+    default void show() {
         System.out.println("Father");
     }
 }
 
 interface Mother {
-    default void Mothershow() {
+    default void show() {
         System.out.println("Mother");
     }
 }
@@ -14,8 +14,8 @@ class Child implements Father, Mother {
 
     // MUST override to resolve ambiguity
     public void show() {
-       Fathershow();
-        Mothershow();
+       Father.super.show();
+        Mother.super.show();
         System.out.println("Child");
     }
 }

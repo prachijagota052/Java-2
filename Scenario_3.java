@@ -10,7 +10,7 @@ class Product{
 
 class ShoppingCart extends Product{
     ShoppingCart() { super(null, 0); }
-    ArrayList<Product> products=new ArrayList<Product>();
+    ArrayList<Product> products=new ArrayList<>();
     public void addProduct(Product p){
         products.add(p);
     }
